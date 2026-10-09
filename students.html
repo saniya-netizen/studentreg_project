@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Registered Students</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #1f3c88;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .header h1 {
+            margin: 0 0 8px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1f3c88;
+        }
+
+        /* Search Box */
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .search-button {
+            padding: 12px 22px;
+            background-color: #1f3c88;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .search-button:hover {
+            background-color: #162d68;
+        }
+
+        .clear-button {
+            padding: 12px 22px;
+            background-color: #777;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .clear-button:hover {
+            background-color: #555;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1f3c88;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 7px 12px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            margin: 2px;
+        }
+
+        .edit-button {
+            background-color: #198754;
+        }
+
+        .edit-button:hover {
+            background-color: #146c43;
+        }
+
+        .delete-button {
+            background-color: #d9534f;
+        }
+
+        .delete-button:hover {
+            background-color: #b52b27;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 11px 20px;
+            background-color: #1f3c88;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .no-students {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="header">
+
+        <h1>Student Registration Portal</h1>
+
+        <p>Registered Students</p>
+
+    </div>
+
+
+    <div class="container">
+
+        <h2>Registered Students</h2>
+
+
+        <!-- Search Form -->
+
+        <form
+            action="/students"
+            method="GET"
+            class="search-box">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search by name or register number..."
+                value="{{ search }}">
+
+            <button
+                type="submit"
+                class="search-button">
+
+                Search
+
+            </button>
+
+            <a
+                href="/students"
+                class="clear-button">
+
+                Clear
+
+            </a>
+
+        </form>
+
+
+        {% if students %}
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Register Number</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Course</th>
+                        <th>Semester</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for student in students %}
+
+                    <tr>
+
+                        <td>{{ student[0] }}</td>
+
+                        <td>{{ student[1] }}</td>
+
+                        <td>{{ student[2] }}</td>
+
+                        <td>{{ student[3] }}</td>
+
+                        <td>{{ student[4] }}</td>
+
+                        <td>{{ student[5] }}</td>
+
+                        <td>{{ student[6] }}</td>
+
+                        <td>{{ student[7] }}</td>
+
+                        <td>{{ student[8] }}</td>
+
+
+                        <td>
+
+                            <a
+                                href="/edit/{{ student[0] }}"
+                                class="action-button edit-button">
+
+                                Edit
+
+                            </a>
+
+
+                            <a
+                                href="/delete/{{ student[0] }}"
+                                class="action-button delete-button"
+                                onclick="return confirm('Are you sure you want to delete this student?');">
+
+                                Delete
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+        <div class="no-students">
+
+            <p>No students found.</p>
+
+        </div>
+
+        {% endif %}
+
+
+        <a
+            href="/"
+            class="back-button">
+
+            ← Back to Registration
+
+        </a>
+
+    </div>
+
+
+</body>
+
+</html>

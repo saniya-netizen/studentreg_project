@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration Portal</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+        }
+
+
+        /* Navigation */
+
+        nav {
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffd166;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #ffd166;
+        }
+
+
+        /* Hero Section */
+
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 55px 20px 35px;
+        }
+
+        .hero .icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+
+        /* Feature Cards */
+
+        .features {
+            width: 90%;
+            max-width: 900px;
+            margin: 10px auto 35px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 250px;
+            padding: 22px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .feature-card .emoji {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h3 {
+            color: #5a4fcf;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+
+        /* Registration Container */
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .container h2 {
+            text-align: center;
+            color: #5a4fcf;
+            margin-bottom: 25px;
+            font-size: 27px;
+        }
+
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 6px rgba(102,126,234,0.3);
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+
+        /* Gender */
+
+        .gender {
+            display: flex;
+            gap: 25px;
+        }
+
+        .gender label {
+            font-weight: normal;
+        }
+
+        .gender input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+
+        /* Register Button */
+
+        .register-button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .register-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(102,126,234,0.4);
+        }
+
+
+        /* View Students Button */
+
+        .view-button {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            padding: 12px;
+            background: #f3f0ff;
+            color: #5a4fcf;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .view-button:hover {
+            background: #e4defc;
+        }
+
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 14px;
+            background: rgba(0,0,0,0.15);
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 25px;
+            }
+
+            .gender {
+                gap: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">
+            🎓 Student<span>Portal</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/students">Students</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
+        <div class="icon">🎓</div>
+
+        <h1>Student Registration Portal</h1>
+
+        <p>
+            Register easily. Manage your details. Stay connected.
+        </p>
+
+    </section>
+
+
+    <!-- Feature Cards -->
+
+    <section class="features">
+
+        <div class="feature-card">
+
+            <div class="emoji">⚡</div>
+
+            <h3>Fast</h3>
+
+            <p>
+                Quick and simple student registration process.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="emoji">🔒</div>
+
+            <h3>Secure</h3>
+
+            <p>
+                Student information is stored safely in the database.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="emoji">✨</div>
+
+            <h3>Easy</h3>
+
+            <p>
+                Easily view, search and manage student records.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Registration Form -->
+
+    <div class="container">
+
+        <h2>📝 Register New Student</h2>
+
+
+        <form action="/register" method="POST">
+
+
+            <div class="form-group">
+
+                <label>Student Name</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter student name"
+                    pattern="[A-Za-z ]{3,50}"
+                    title="Name should contain only letters and spaces"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Register Number</label>
+
+                <input
+                    type="text"
+                    name="register_number"
+                    placeholder="Enter register number"
+                    minlength="3"
+                    maxlength="20"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="example@email.com"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter 10-digit phone number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    title="Phone number must contain exactly 10 digits"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Course</label>
+
+                <select name="course" required>
+
+                    <option value="">-- Select Course --</option>
+
+                    <option value="Computer Science">
+                        Computer Science
+                    </option>
+
+                    <option value="Computer Applications">
+                        Computer Applications
+                    </option>
+
+                    <option value="Data Science">
+                        Data Science
+                    </option>
+
+                    <option value="Artificial Intelligence">
+                        Artificial Intelligence
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Semester</label>
+
+                <select name="semester" required>
+
+                    <option value="">-- Select Semester --</option>
+
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5">Semester 5</option>
+                    <option value="6">Semester 6</option>
+                    <option value="7">Semester 7</option>
+                    <option value="8">Semester 8</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Gender</label>
+
+                <div class="gender">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Male"
+                            required>
+                        Male
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Female">
+                        Female
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Other">
+                        Other
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Address</label>
+
+                <textarea
+                    name="address"
+                    rows="4"
+                    placeholder="Enter address"
+                    minlength="5"
+                    required></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="register-button">
+
+                ✨ Register Student
+
+            </button>
+
+
+        </form>
+
+
+        <a
+            href="/students"
+            class="view-button">
+
+            👥 View Registered Students
+
+        </a>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        © 2026 Student Registration Portal | College Project
+
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Successful</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+            text-align: center;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 550px;
+            margin: 100px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1f3c88;
+        }
+
+        p {
+            font-size: 18px;
+            color: #444;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 20px;
+            background-color: #1f3c88;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        a:hover {
+            background-color: #162d68;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Registration Successful! 🎉</h1>
+
+        <p>
+            Student <strong>{{ name }}</strong>
+            has been registered successfully.
+        </p>
+
+        <a href="/">
+            Register Another Student
+        </a>
+
+        <a href="/students">
+            View Registered Students
+        </a>
+
+    </div>
+
+</body>
+
+</html>
